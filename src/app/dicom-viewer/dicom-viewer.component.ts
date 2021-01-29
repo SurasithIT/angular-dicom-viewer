@@ -34,7 +34,6 @@ export class DicomViewerComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    // let imageId = 'https://rawgit.com/cornerstonejs/cornerstoneWebImageLoader/master/examples/Renal_Cell_Carcinoma.jpg';
     let imageId = "https://telemedia.dms.go.th/media-staging/2021/01/4d6d3116-0bd5-41ac-b43b-cac904c15aa8.dcm";
     let viewerElement = this.viewer.nativeElement;
 
