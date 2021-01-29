@@ -31,6 +31,16 @@ export class DicomViewerComponent implements OnInit {
   ngOnInit(): void {
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+
+    cornerstoneTools.external.Hammer = Hammer;
+    cornerstoneTools.external.cornerstone = cornerstone;
+    cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
+    cornerstoneTools.init({
+      mouseEnabled: true,
+      touchEnabled: true,
+      globalToolSyncEnabled: false,
+      showSVGCursors: false,
+    });
   }
 
   ngAfterViewInit(): void {
@@ -39,10 +49,14 @@ export class DicomViewerComponent implements OnInit {
 
     console.log(viewerElement)
     cornerstone.enable(viewerElement);
-
     cornerstone.loadImage("wadouri:" + imageId).then(imageData => {
       console.log("imageData => ", imageData);
       cornerstone.displayImage(viewerElement, imageData);
+
     }).catch(error => { console.error(error) });
+
+    const LengthTool = cornerstoneTools.LengthTool;
+    cornerstoneTools.addToolForElement(viewerElement, LengthTool)
+    cornerstoneTools.setToolActive('Length', { mouseButtonMask: 1 })
   }
 }
