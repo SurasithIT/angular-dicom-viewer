@@ -44,8 +44,5 @@ export class DicomViewerComponent implements OnInit {
       console.log("imageData => ", imageData);
       cornerstone.displayImage(viewerElement, imageData);
     }).catch(error => { console.error(error) });
-
-    cornerstone.resize(viewerElement, true);
-
   }
 }
