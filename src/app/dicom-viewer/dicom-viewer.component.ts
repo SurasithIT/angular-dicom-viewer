@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild, ViewChildren } from '@angular/core';
 import * as cornerstone from "cornerstone-core";
 import * as cornerstoneMath from "cornerstone-math";
 import * as cornerstoneTools from "cornerstone-tools";
@@ -10,7 +10,7 @@ import * as dicomParser from 'dicom-parser';
 @Component({
   selector: 'app-dicom-viewer',
   templateUrl: './dicom-viewer.component.html',
-  styleUrls: ['./dicom-viewer.component.sass']
+  styleUrls: ['./dicom-viewer.component.scss']
 })
 
 
@@ -23,17 +23,14 @@ export class DicomViewerComponent implements OnInit {
   constructor() {
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    cornerstone.resize(this.viewer.nativeElement, true);
+  }
+
   ngOnInit(): void {
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
-
-    // cornerstoneTools.external.cornerstone = cornerstone;
-    // cornerstoneTools.external.cornerstoneMath = cornerstoneMath;
-    // cornerstoneWebImageLoader.external.cornerstone = cornerstone;
-    // cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
-    // cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
-    // cornerstoneWADOImageLoader.webWorkerManager.initialize(this.config);
-    // cornerstoneTools.external.Hammer = Hammer;
   }
 
   ngAfterViewInit(): void {
@@ -43,18 +40,13 @@ export class DicomViewerComponent implements OnInit {
 
     console.log(viewerElement)
     cornerstone.enable(viewerElement);
-    // cornerstone.loadImage(imageId).then(function (image) {
-    //   cornerstone.displayImage(viewerElement, image);
-    // });
-
-    // cornerstone.loadAndCacheImage("wadouri:" + imageId).then(imageData => {
-    //   console.log("imageData => ", imageData);
-    //   cornerstone.displayImage(viewerElement, imageData);
-    // }).catch(error => { console.error(error) });
 
     cornerstone.loadImage("wadouri:" + imageId).then(imageData => {
       console.log("imageData => ", imageData);
       cornerstone.displayImage(viewerElement, imageData);
     }).catch(error => { console.error(error) });
+
+    cornerstone.resize(viewerElement, true);
+
   }
 }
