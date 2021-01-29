@@ -1,1 +1,1 @@
-# angular-dicom-viewr
+# angular-dicom-viewer
