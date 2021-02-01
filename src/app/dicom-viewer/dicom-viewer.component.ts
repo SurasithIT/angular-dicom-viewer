@@ -22,6 +22,13 @@ export class DicomViewerComponent implements OnInit {
   }
   viewport;
   imageId = "https://telemedia.dms.go.th/media-staging/2021/01/4d6d3116-0bd5-41ac-b43b-cac904c15aa8.dcm";
+  imageIds = [
+    'https://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.9.dcm',
+    'https://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.10.dcm',
+    'https://s3.amazonaws.com/lury/PTCTStudy/1.3.6.1.4.1.25403.52237031786.3872.20100510032220.11.dcm',
+  ]
+  initialIndex: number = 0;
+  renderedIndex: number = 0;
 
   constructor() {
   }
@@ -34,6 +41,8 @@ export class DicomViewerComponent implements OnInit {
   ngOnInit(): void {
     cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
     cornerstoneWADOImageLoader.external.dicomParser = dicomParser;
+    console.log("this.images[0] => ", this.imageIds)
+
   }
 
   ngAfterViewInit(): void {
@@ -41,11 +50,32 @@ export class DicomViewerComponent implements OnInit {
 
     console.log(viewerElement)
     cornerstone.enable(viewerElement);
-    cornerstone.loadImage("wadouri:" + this.imageId)
+    this.renderImage(viewerElement, this.imageIds[0]);
+  }
+
+  nextImage() {
+    let viewerElement = this.viewer.nativeElement;
+    if (this.renderedIndex + 1 < this.imageIds.length) {
+      this.renderImage(viewerElement, this.imageIds[this.renderedIndex + 1]);
+      this.renderedIndex += 1;
+    }
+  }
+
+  prevImage() {
+    let viewerElement = this.viewer.nativeElement;
+    if (this.renderedIndex - 1 >= 0) {
+      this.renderImage(viewerElement, this.imageIds[this.renderedIndex - 1]);
+      this.renderedIndex -= 1;
+    }
+
+  }
+
+  renderImage(element, imageId) {
+    cornerstone.loadImage("wadouri:" + imageId)
       .then(imageData => {
         console.log("imageData => ", imageData);
-        cornerstone.displayImage(viewerElement, imageData);
-        let viewport = cornerstone.getViewport(viewerElement);
+        cornerstone.displayImage(element, imageData);
+        let viewport = cornerstone.getViewport(element);
         console.log("viewport => ", viewport);
         this.viewport = viewport;
       }).catch(error => { console.error(error) });
@@ -61,4 +91,6 @@ export class DicomViewerComponent implements OnInit {
     viewport.invert = false
     cornerstone.setViewport(viewerElement, defaultViewport)
   }
+
+
 }

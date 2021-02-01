@@ -4,4 +4,8 @@
     WW/WC: {{viewport?.voi.windowWidth }} /
     {{viewport?.voi.windowCenter }}
 </div>
+<button (click)="prevImage()">
+    <-</button> <button (click)="nextImage()">->
+</button>
+
 <div ngModel #viewer id=viewer></div>
