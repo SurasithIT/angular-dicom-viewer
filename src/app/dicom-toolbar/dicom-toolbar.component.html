@@ -1,21 +1,19 @@
 <div class="container">
-    toobar
-    <button (click)="magnifyTool()">
-        magnify
-    </button>
-    <button (click)="lengthTool()">
-        length
-    </button>
-    <button (click)="zoomTouchPinchTool()">
-        zoomTouchPinch
-    </button>
-    <button (click)="doubleTapFitToWindowTool()">
-        doubleTapFitToWindowTool
-    </button>
-    <button (click)="angleTool()">
-        angle
-    </button>
-    <button (click)="eraserTool()">
-        eraser
+    Tools
+    <div class="button-group">
+        <button *ngFor="let tool of tools;" (click)="selectTool(tool.toolName,tool.name,options)" class="button">
+            {{tool.name}}
+        </button>
+    </div>
+    Touch tools
+    <div class="button-group">
+        <button *ngFor="let tool of touchTools;" (click)="selectTouchTool(tool.toolName,tool.name,options)"
+            class="button">
+            {{tool.name}}
+        </button>
+    </div>
+
+    <button (click)="resetTools()">
+        reset tools
     </button>
 </div>

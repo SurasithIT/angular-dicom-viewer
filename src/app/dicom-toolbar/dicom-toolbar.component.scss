@@ -1,4 +1,14 @@
 .container{
-    background: blue;
+    // background: blue;
+    width: 100%;
     padding: 0.7rem;
+}
+.button-group{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+
+    .button{
+        margin: 0.2rem;
+    }
 }

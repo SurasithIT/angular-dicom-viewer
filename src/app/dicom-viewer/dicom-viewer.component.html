@@ -1,1 +1,7 @@
+<button (click)="resetImage()">reset image</button>
+<div>Zoom: {{viewport?.scale }}</div>
+<div>
+    WW/WC: {{viewport?.voi.windowWidth }} /
+    {{viewport?.voi.windowCenter }}
+</div>
 <div ngModel #viewer id=viewer></div>

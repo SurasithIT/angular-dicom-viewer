@@ -20,6 +20,9 @@ export class DicomViewerComponent implements OnInit {
     maxWebWorkers: navigator.hardwareConcurrency || 1,
     startWebWorkersOnDemand: true,
   }
+  viewport;
+  imageId = "https://telemedia.dms.go.th/media-staging/2021/01/4d6d3116-0bd5-41ac-b43b-cac904c15aa8.dcm";
+
   constructor() {
   }
 
@@ -34,17 +37,28 @@ export class DicomViewerComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    let imageId = "https://telemedia.dms.go.th/media-staging/2021/01/4d6d3116-0bd5-41ac-b43b-cac904c15aa8.dcm";
     let viewerElement = this.viewer.nativeElement;
 
     console.log(viewerElement)
     cornerstone.enable(viewerElement);
-    cornerstone.loadImage("wadouri:" + imageId).then(imageData => {
-      console.log("imageData => ", imageData);
-      cornerstone.displayImage(viewerElement, imageData);
-      let viewport = cornerstone.getViewport(viewerElement);
-      console.log("viewport => ", viewport);
+    cornerstone.loadImage("wadouri:" + this.imageId)
+      .then(imageData => {
+        console.log("imageData => ", imageData);
+        cornerstone.displayImage(viewerElement, imageData);
+        let viewport = cornerstone.getViewport(viewerElement);
+        console.log("viewport => ", viewport);
+        this.viewport = viewport;
+      }).catch(error => { console.error(error) });
+  }
 
-    }).catch(error => { console.error(error) });
+  resetImage() {
+    let viewerElement = this.viewer.nativeElement;
+    let image = cornerstone.getImage(viewerElement)
+    const defaultViewport = cornerstone.getDefaultViewportForImage(viewerElement, image)
+    let viewport = cornerstone.getViewport(viewerElement)
+    viewport.voi.windowWidth = defaultViewport.voi.windowWidth
+    viewport.voi.windowCenter = defaultViewport.voi.windowCenter
+    viewport.invert = false
+    cornerstone.setViewport(viewerElement, defaultViewport)
   }
 }
