@@ -13,31 +13,32 @@ import { DicomViewerComponent } from '../dicom-viewer/dicom-viewer.component';
 export class DicomToolbarComponent implements OnInit {
   options = { mouseButtonMask: 1 }
   tools: Array<Tool> = [
-    { toolName: "MagnifyTool", name: "Magnify", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "LengthTool", name: "Length", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "ZoomMouseWheelTool", name: "ZoomMouseWheel", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "AngleTool", name: "Angle", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "EraserTool", name: "Eraser", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "PanTool", name: "Pan", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "RotateTool", name: "Rotate", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "WwwcTool", name: "Wwwc", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "WwwcRegionTool", name: "WwwcRegion", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "ProbeTool", name: "Probe", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "ArrowAnnotateTool", name: "ArrowAnnotate", enabled: false, options: { mouseButtonMask: 1 } },
-    // { toolName: "BidirectionalTool", name: "Bidirectional", enabled: false , options: { mouseButtonMask: 1 }},
-    { toolName: "EllipticalRoiTool", name: "EllipticalRoi", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "FreehandRoiTool", name: "FreehandRoi", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "RectangleRoiTool", name: "RectangleRoi", enabled: false, options: { mouseButtonMask: 1 } },
-
+    { toolName: "MagnifyTool", name: "Magnify", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "LengthTool", name: "Length", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "ZoomMouseWheelTool", name: "ZoomMouseWheel", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "AngleTool", name: "Angle", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "EraserTool", name: "Eraser", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "PanTool", name: "Pan", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "RotateTool", name: "Rotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "WwwcTool", name: "Wwwc", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "WwwcRegionTool", name: "WwwcRegion", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "ProbeTool", name: "Probe", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "ArrowAnnotateTool", name: "ArrowAnnotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    // { toolName: "BidirectionalTool", name: "Bidirectional", enabled: false , options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "EllipticalRoiTool", name: "EllipticalRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "FreehandRoiTool", name: "FreehandRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "RectangleRoiTool", name: "RectangleRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "StackScrollTool", name: "StackScroll", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "StackScrollMouseWheelTool", name: "StackScrollMouseWheel", enabled: false, options: null, icon: "" }
   ]
 
   touchTools: Array<Tool> = [
-    { toolName: "ZoomTouchPinchTool", name: "ZoomTouchPinch", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "DoubleTapFitToWindowTool", name: "DoubleTapFitToWindow", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "PanMultiTouchTool", name: "PanMultiTouch", enabled: false, options: { mouseButtonMask: 1 } },
-    { toolName: "RotateTouchTool", name: "RotateTouch", enabled: false, options: { mouseButtonMask: 1 } },
+    { toolName: "ZoomTouchPinchTool", name: "ZoomTouchPinch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "DoubleTapFitToWindowTool", name: "DoubleTapFitToWindow", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "PanMultiTouchTool", name: "PanMultiTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
+    { toolName: "RotateTouchTool", name: "RotateTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" }
   ]
 
   constructor() { }
@@ -128,4 +129,5 @@ interface Tool {
   name: string,
   enabled: boolean,
   options: object
+  icon: string
 }

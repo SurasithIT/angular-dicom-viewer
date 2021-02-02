@@ -5,7 +5,11 @@
     {{viewport?.voi.windowCenter }}
 </div>
 <button (click)="prevImage()">
-    <-</button> <button (click)="nextImage()">->
+    <-</button> <button (click)="playImage()">|>
+</button>
+<button (click)="pauseImage()"> ||
+</button>
+<button (click)="nextImage()">->
 </button>
 
 <div ngModel #viewer id=viewer></div>
