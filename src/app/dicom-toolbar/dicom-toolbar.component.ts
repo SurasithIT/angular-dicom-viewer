@@ -13,32 +13,31 @@ import { DicomViewerComponent } from '../dicom-viewer/dicom-viewer.component';
 export class DicomToolbarComponent implements OnInit {
   options = { mouseButtonMask: 1 }
   tools: Array<Tool> = [
-    { toolName: "MagnifyTool", name: "Magnify", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "LengthTool", name: "Length", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "ZoomMouseWheelTool", name: "ZoomMouseWheel", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "AngleTool", name: "Angle", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "EraserTool", name: "Eraser", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "PanTool", name: "Pan", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "RotateTool", name: "Rotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "WwwcTool", name: "Wwwc", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "WwwcRegionTool", name: "WwwcRegion", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "ProbeTool", name: "Probe", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "ArrowAnnotateTool", name: "ArrowAnnotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    // { toolName: "BidirectionalTool", name: "Bidirectional", enabled: false , options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "EllipticalRoiTool", name: "EllipticalRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "FreehandRoiTool", name: "FreehandRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "RectangleRoiTool", name: "RectangleRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "StackScrollTool", name: "StackScroll", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "StackScrollMouseWheelTool", name: "StackScrollMouseWheel", enabled: false, options: null, icon: "" }
+    { toolName: "MagnifyTool", name: "Magnify", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-search" },
+    { toolName: "LengthTool", name: "Length", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-ellipsis-h" },
+    { toolName: "ZoomTool", name: "Zoom", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-search-plus" },
+    { toolName: "ZoomMouseWheelTool", name: "ZoomMouseWheel", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-mouse" },
+    { toolName: "AngleTool", name: "Angle", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-angle-left" },
+    { toolName: "EraserTool", name: "Eraser", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-eraser" },
+    { toolName: "PanTool", name: "Pan", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-expand-arrows-alt" },
+    { toolName: "RotateTool", name: "Rotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-redo-alt" },
+    { toolName: "WwwcTool", name: "Wwwc", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-adjust" },
+    { toolName: "WwwcRegionTool", name: "WwwcRegion", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-square" },
+    { toolName: "ProbeTool", name: "Probe", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-map-pin" },
+    { toolName: "ArrowAnnotateTool", name: "ArrowAnnotate", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-long-arrow-alt-down" },
+    // { toolName: "BidirectionalTool", name: "Bidirectional", enabled: false , options: { mouseButtonMask: 1 }},
+    { toolName: "EllipticalRoiTool", name: "EllipticalRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "far fa-circle" },
+    { toolName: "FreehandRoiTool", name: "FreehandRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-draw-polygon" },
+    { toolName: "RectangleRoiTool", name: "RectangleRoi", enabled: false, options: { mouseButtonMask: 1 }, icon: "far fa-square" },
+    { toolName: "StackScrollTool", name: "StackScroll", enabled: false, options: {}, icon: "" },
+    { toolName: "StackScrollMouseWheelTool", name: "StackScrollMouseWheel", enabled: false, options: {}, icon: "" }
   ]
 
   touchTools: Array<Tool> = [
-    { toolName: "ZoomTouchPinchTool", name: "ZoomTouchPinch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "DoubleTapFitToWindowTool", name: "DoubleTapFitToWindow", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "PanMultiTouchTool", name: "PanMultiTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" },
-    { toolName: "RotateTouchTool", name: "RotateTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "" }
+    { toolName: "ZoomTouchPinchTool", name: "ZoomTouchPinch", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-hand-peace" },
+    { toolName: "DoubleTapFitToWindowTool", name: "DoubleTapFitToWindow", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-hand-point-up" },
+    { toolName: "PanMultiTouchTool", name: "PanMultiTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-hand-paper" },
+    { toolName: "RotateTouchTool", name: "RotateTouch", enabled: false, options: { mouseButtonMask: 1 }, icon: "fas fa-redo-alt" },
   ]
 
   constructor() { }
