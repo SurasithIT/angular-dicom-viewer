@@ -61,7 +61,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-dicom-viewer:build"
+            "browserTarget": "angular-dicom-viewer:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {
